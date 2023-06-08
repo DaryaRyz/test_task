@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const BagScreen(),
       );
     },
+    CategoryScreenRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CategoryScreen(),
+      );
+    },
     MainScreenRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -49,12 +55,6 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const SearchScreen(),
-      );
-    },
-    CategoryScreenRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CategoryScreen(),
       );
     },
   };
@@ -103,6 +103,20 @@ class BagScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [CategoryScreen]
+class CategoryScreenRoute extends PageRouteInfo<void> {
+  const CategoryScreenRoute({List<PageRouteInfo>? children})
+      : super(
+          CategoryScreenRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CategoryScreenRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [MainScreen]
 class MainScreenRoute extends PageRouteInfo<void> {
   const MainScreenRoute({List<PageRouteInfo>? children})
@@ -140,20 +154,6 @@ class SearchScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SearchScreenRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [CategoryScreen]
-class CategoryScreenRoute extends PageRouteInfo<void> {
-  const CategoryScreenRoute({List<PageRouteInfo>? children})
-      : super(
-          CategoryScreenRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CategoryScreenRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
