@@ -40,13 +40,17 @@ class $AssetsIconsGen {
   /// File path: assets/icons/favorite.svg
   SvgGenImage get favorite => const SvgGenImage('assets/icons/favorite.svg');
 
+  /// File path: assets/icons/image_error.svg
+  SvgGenImage get imageError =>
+      const SvgGenImage('assets/icons/image_error.svg');
+
   /// File path: assets/icons/location.svg
   SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
   $AssetsIconsNavBarGen get navBar => const $AssetsIconsNavBarGen();
 
   /// List of all assets
-  List<SvgGenImage> get values => [back, close, favorite, location];
+  List<SvgGenImage> get values => [back, close, favorite, imageError, location];
 }
 
 class $AssetsImagesGen {

@@ -27,21 +27,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: ColorStyles.backgroundColor,
-      elevation: 0,
-      centerTitle: type == AppBarType.classic,
-      leading: _getLeading(type, onBack: () => Navigator.pop(context)),
-      title: _getTitle(type),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 16),
-          child: CircleAvatar(
-            radius: 22,
-            backgroundImage: Image.asset(Assets.images.avatar.path).image,
+    return Padding(
+      padding: const EdgeInsets.only(top: 8),
+      child: AppBar(
+        backgroundColor: ColorStyles.backgroundColor,
+        elevation: 0,
+        centerTitle: type == AppBarType.classic,
+        leading: _getLeading(type, onBack: () => Navigator.pop(context)),
+        title: _getTitle(type),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: CircleAvatar(
+              radius: 22,
+              backgroundImage: Image.asset(Assets.images.avatar.path).image,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
