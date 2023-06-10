@@ -5,6 +5,5 @@ class UiUtil{
     final result = DateFormat('dd MMMM, yyyy', 'ru').format(date);
     String month = result.replaceAll(RegExp(r'[^\D]'), '').trim();
     return result.replaceAll(month, month[0].toUpperCase() + month.substring(1));
-
   }
 }

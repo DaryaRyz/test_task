@@ -5,10 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:test_task_flutter/domain/bloc/dishes_bloc.dart';
 import 'package:test_task_flutter/domain/models/category.dart';
-import 'package:test_task_flutter/domain/models/dish.dart';
 import 'package:test_task_flutter/presentation/screens/category_screen/widgets/category_content.dart';
-import 'package:test_task_flutter/presentation/screens/category_screen/widgets/filter_item.dart';
-import 'package:test_task_flutter/presentation/screens/category_screen/widgets/dish_card.dart';
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
 import 'package:test_task_flutter/presentation/widgets/app_loader.dart';
 import 'package:test_task_flutter/presentation/widgets/custom_app_bar.dart';
@@ -28,7 +25,7 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  final _mealBloc = GetIt.I<DishesBloc>();
+  final _dishesBloc = GetIt.I<DishesBloc>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,16 +36,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
         title: widget.category.name ?? 'catalog'.tr(),
       ),
       body: BlocBuilder(
-        bloc: _mealBloc,
+        bloc: _dishesBloc,
         builder: (context, state) {
           if (state is DishesReadyState) {
-            return CategoryContent(meals: state.meals);
+            return CategoryContent(
+              data: state.data,
+              bloc: _dishesBloc,
+            );
           } else if (state is DishesLoadingState) {
             return const AppLoader();
           } else if (state is DishesErrorState) {
             return ErrorBody(
               errorText: state.errorText,
-              onTap: () => _mealBloc.add(GetDishesEvent()),
+              onTap: () => _dishesBloc.add(GetDishesEvent()),
             );
           }
           return const SizedBox();

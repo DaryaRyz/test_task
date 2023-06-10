@@ -8,7 +8,9 @@ class FilterItem extends StatelessWidget {
   final Color inactiveColor;
   final Color activeTextColor;
   final Color inactiveTextColor;
+  final double borderRadius;
   final bool isActive;
+  final VoidCallback onTap;
 
   const FilterItem({
     Key? key,
@@ -17,6 +19,8 @@ class FilterItem extends StatelessWidget {
     this.inactiveColor = ColorStyles.mainItemColor,
     this.activeTextColor = ColorStyles.secondFontColor,
     this.inactiveTextColor = ColorStyles.primaryFontColor,
+    this.borderRadius = 10,
+    required this.onTap,
     required this.isActive,
   }) : super(key: key);
 
@@ -25,15 +29,21 @@ class FilterItem extends StatelessWidget {
     return Container(
       height: 35,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(borderRadius),
         color: isActive ? activeColor : inactiveColor,
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Center(
-        child: Text(
-          title,
-          style: TextStyles.h4.copyWith(
-            color: isActive ? activeTextColor : inactiveTextColor,
+      child: TextButton(
+        onPressed: onTap,
+        style: TextButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius)),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: TextStyles.h4.copyWith(
+              color: isActive ? activeTextColor : inactiveTextColor,
+            ),
           ),
         ),
       ),
