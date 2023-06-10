@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ColorStyles {
   static const backgroundColor = Color.fromRGBO(255, 255, 255, 1);
   static const borderColor = Color.fromRGBO(232, 233, 236, 1);
+  static const mainItemColor = Color.fromRGBO(248, 247, 245, 1);
   static const actionColor = Color.fromRGBO(51, 100, 224, 1);
   static const darkLoadingColor = Color.fromRGBO(151, 151, 151, 1);
   static const lightLoadingColor = Color.fromRGBO(232, 233, 236, 1);
@@ -14,4 +15,5 @@ class ColorStyles {
 
   ///fonts
   static const primaryFontColor = Color.fromRGBO(0, 0, 0, 1);
+  static const secondFontColor = Color.fromRGBO(255, 255, 255, 1);
 }

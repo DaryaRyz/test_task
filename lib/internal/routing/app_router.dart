@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:test_task_flutter/domain/models/category.dart';
 import 'package:test_task_flutter/internal/home_page.dart';
 import 'package:test_task_flutter/presentation/screens/bag_screen/bag_screen.dart';
 import 'package:test_task_flutter/presentation/screens/category_screen/category_screen.dart';

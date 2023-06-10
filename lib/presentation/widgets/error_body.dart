@@ -25,6 +25,7 @@ class ErrorBody extends StatelessWidget {
               color: ColorStyles.errorColor,
               size: 50,
             ),
+            const SizedBox(height: 12),
             Text(
               errorText,
               style: TextStyles.h2,

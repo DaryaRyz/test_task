@@ -6,16 +6,18 @@ import 'package:test_task_flutter/presentation/widgets/app_loader.dart';
 
 class ImagePreview extends StatelessWidget {
   final String? imageUrl;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final BorderRadiusGeometry? borderRadius;
+  final BoxFit fit;
 
   const ImagePreview({
     Key? key,
     this.imageUrl,
-    this.width = double.maxFinite,
-    this.height = 150,
+    this.width,
+    this.height,
     this.borderRadius,
+    this.fit = BoxFit.fill,
   }) : super(key: key);
 
   @override
@@ -25,7 +27,9 @@ class ImagePreview extends StatelessWidget {
             borderRadius: borderRadius ?? BorderRadius.circular(10),
             child: CachedNetworkImage(
               imageUrl: imageUrl!,
-              width: double.maxFinite,
+              width: width,
+              height: height,
+              fit: fit,
               progressIndicatorBuilder: (context, url, downloadProgress) => Container(
                 color: Colors.grey,
                 width: width,
@@ -49,7 +53,6 @@ class ImagePreview extends StatelessWidget {
                   ),
                 ),
               ),
-              fit: BoxFit.fill,
             ),
           )
         : Container(

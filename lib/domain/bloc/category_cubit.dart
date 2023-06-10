@@ -6,11 +6,11 @@ import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:test_task_flutter/data/services/api_exceptions.dart';
 import 'package:test_task_flutter/domain/models/category.dart';
-import 'package:test_task_flutter/domain/repository/i_category_repository.dart';
+import 'package:test_task_flutter/domain/repository/i_products_repository.dart';
 
 @injectable
 class CategoryCubit extends Cubit<CategoryState> {
-  final ICategoryRepository repository;
+  final IProductsRepository repository;
 
   CategoryCubit(this.repository) : super(CategoryLoadingState()) {
     getCategories();

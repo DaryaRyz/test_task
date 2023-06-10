@@ -34,9 +34,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CategoryScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<CategoryScreenRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const CategoryScreen(),
+        child: CategoryScreen(
+          key: args.key,
+          category: args.category,
+        ),
       );
     },
     MainScreenRoute.name: (routeData) {
@@ -104,16 +108,40 @@ class BagScreenRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CategoryScreen]
-class CategoryScreenRoute extends PageRouteInfo<void> {
-  const CategoryScreenRoute({List<PageRouteInfo>? children})
-      : super(
+class CategoryScreenRoute extends PageRouteInfo<CategoryScreenRouteArgs> {
+  CategoryScreenRoute({
+    Key? key,
+    required Category category,
+    List<PageRouteInfo>? children,
+  }) : super(
           CategoryScreenRoute.name,
+          args: CategoryScreenRouteArgs(
+            key: key,
+            category: category,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CategoryScreenRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CategoryScreenRouteArgs> page =
+      PageInfo<CategoryScreenRouteArgs>(name);
+}
+
+class CategoryScreenRouteArgs {
+  const CategoryScreenRouteArgs({
+    this.key,
+    required this.category,
+  });
+
+  final Key? key;
+
+  final Category category;
+
+  @override
+  String toString() {
+    return 'CategoryScreenRouteArgs{key: $key, category: $category}';
+  }
 }
 
 /// generated route for
