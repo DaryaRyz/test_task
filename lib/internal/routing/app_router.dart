@@ -25,7 +25,7 @@ class AppRouter extends _$AppRouter {
                 CustomRoute(
                   path: 'category',
                   page: CategoryScreenRoute.page,
-                  transitionsBuilder: TransitionsBuilders.slideLeft,
+                  transitionsBuilder: TransitionsBuilders.slideLeftWithFade,
                 ),
               ],
             ),
