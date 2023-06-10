@@ -42,7 +42,7 @@ class CategoryContent extends StatelessWidget {
               mainAxisSpacing: 14,
               crossAxisCount: 3,
             ),
-            itemBuilder: (context, int index) => DishCard(meal: data.dishes[index]),
+            itemBuilder: (context, int index) => DishCard(dish: data.dishes[index]),
           ),
         ),
       ],

@@ -8,6 +8,7 @@ class ColorStyles {
   static const darkLoadingColor = Color.fromRGBO(151, 151, 151, 1);
   static const lightLoadingColor = Color.fromRGBO(232, 233, 236, 1);
   static const errorColor = Color.fromRGBO(218, 104, 104, 1);
+  static const primaryButtonColor = Color.fromRGBO(51, 100, 224, 1);
 
   ///navbar
   static const inactiveNavBarColor = Color.fromRGBO(165, 169, 178, 1);
