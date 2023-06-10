@@ -26,32 +26,32 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: const CustomAppBar(),
       backgroundColor: ColorStyles.backgroundColor,
-      body: Padding(
-        padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
-        child: BlocBuilder(
-          bloc: _categoryCubit,
-          builder: (context, state) {
-            if (state is CategoryReadyState) {
-              return ListView.separated(
-                physics: const BouncingScrollPhysics(),
-                itemCount: state.categories.length,
-                itemBuilder: (context, index) => CategoryCard(
-                  category: state.categories[index],
-                  onTap: () => GetIt.I<AppRouter>().push(const CategoryScreenRoute()),
+      body: BlocBuilder(
+        bloc: _categoryCubit,
+        builder: (context, state) {
+          if (state is CategoryReadyState) {
+            return ListView.separated(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.categories.length,
+              itemBuilder: (context, index) => CategoryCard(
+                category: state.categories[index],
+                onTap: () => GetIt.I<AppRouter>().push(
+                  CategoryScreenRoute(category: state.categories[index]),
                 ),
-                separatorBuilder: (_, __) => const SizedBox(height: 8),
-              );
-            } else if (state is CategoryLoadingState) {
-              return const AppLoader();
-            } else if (state is CategoryErrorState) {
-              return ErrorBody(
-                errorText: state.errorText,
-                onTap: () => _categoryCubit.getCategories(),
-              );
-            }
-            return const SizedBox();
-          },
-        ),
+              ),
+              separatorBuilder: (_, __) => const SizedBox(height: 8),
+            );
+          } else if (state is CategoryLoadingState) {
+            return const AppLoader();
+          } else if (state is CategoryErrorState) {
+            return ErrorBody(
+              errorText: state.errorText,
+              onTap: () => _categoryCubit.getCategories(),
+            );
+          }
+          return const SizedBox();
+        },
       ),
     );
   }

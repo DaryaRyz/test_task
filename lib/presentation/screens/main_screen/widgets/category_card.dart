@@ -19,7 +19,11 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Stack(
         children: [
-          ImagePreview(imageUrl: category.imageUrl),
+          ImagePreview(
+            imageUrl: category.imageUrl,
+            width: double.maxFinite,
+            height: 150,
+          ),
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
