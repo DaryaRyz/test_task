@@ -39,6 +39,21 @@ class _ApplicationState extends State<Application> {
           ),
         ),
       ),
+      builder: (_, child) {
+        return ScrollConfiguration(
+          behavior: const ScrollBehaviorModified(),
+          child: child!,
+        );
+      },
     );
+  }
+}
+
+class ScrollBehaviorModified extends ScrollBehavior {
+  const ScrollBehaviorModified();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const BouncingScrollPhysics();
   }
 }

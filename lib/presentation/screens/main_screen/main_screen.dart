@@ -32,7 +32,6 @@ class _MainScreenState extends State<MainScreen> {
           if (state is CategoryReadyState) {
             return ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              physics: const BouncingScrollPhysics(),
               itemCount: state.categories.length,
               itemBuilder: (context, index) => CategoryCard(
                 category: state.categories[index],
