@@ -29,7 +29,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         _items.add(event.item);
       }
       await _repository.saveBagItems(_items);
-      emit(BagReadyState(_items));
+      emit(BagReadyState(_items, _getTotalPrice(_items)));
     } catch (e) {
       emit(BagErrorState(_errorTextHandler(e)));
     }
@@ -44,7 +44,7 @@ class BagBloc extends Bloc<BagEvent, BagState> {
         _items[index] = _items[index].copyWith(count: _items[index].count - 1);
       }
       await _repository.saveBagItems(_items);
-      emit(BagReadyState(_items));
+      emit(BagReadyState(_items, _getTotalPrice(_items)));
     } catch (e) {
       emit(BagErrorState(_errorTextHandler(e)));
     }
@@ -54,10 +54,18 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     emit(BagLoadingState());
     try {
       _items = await _repository.getBagItems();
-      emit(BagReadyState(_items));
+      emit(BagReadyState(_items, _getTotalPrice(_items)));
     } catch (e) {
       emit(BagErrorState(_errorTextHandler(e)));
     }
+  }
+
+  double _getTotalPrice(List<BagItem> items) {
+    double totalPrice = 0;
+    for (var element in items) {
+      totalPrice += element.count * (element.dish.price ?? 0);
+    }
+    return totalPrice;
   }
 
   String _errorTextHandler(Object e) {
@@ -93,8 +101,9 @@ class BagLoadingState extends BagState {}
 
 class BagReadyState extends BagState {
   final List<BagItem> items;
+  final double totalPrice;
 
-  BagReadyState(this.items);
+  BagReadyState(this.items, this.totalPrice);
 }
 
 class BagErrorState extends BagState {

@@ -84,6 +84,12 @@ class _LocationTitleState extends State<_LocationTitle> {
   final _geoLocatorCubit = GetIt.I<GeoLocatorCubit>();
 
   @override
+  void dispose() {
+    _geoLocatorCubit.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +127,7 @@ class _LocationTitleState extends State<_LocationTitle> {
             const SizedBox(height: 4),
             Text(
               UiUtil.dateFormat(DateTime.now()),
-              style: TextStyles.h4,
+              style: TextStyles.h4.copyWith(color: ColorStyles.primaryFontColor.withOpacity(0.5)),
             ),
           ],
         ),
