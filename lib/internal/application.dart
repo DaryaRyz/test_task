@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:test_task_flutter/internal/application.config.dart';
-import 'package:test_task_flutter/internal/home_page.dart';
+import 'package:test_task_flutter/internal/routing/app_router.dart';
 
 @InjectableInit(preferRelativeImports: false)
 class Application extends StatefulWidget {
@@ -14,6 +14,8 @@ class Application extends StatefulWidget {
 }
 
 class _ApplicationState extends State<Application> {
+  final _appRouter = GetIt.I<AppRouter>();
+
   @override
   void initState() {
     GetIt.instance.init();
@@ -22,14 +24,15 @@ class _ApplicationState extends State<Application> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
+      scrollBehavior: const ScrollBehaviorModified(),
       theme: ThemeData(
         fontFamily: "SF",
-        splashColor: Colors.black87,
         textButtonTheme: TextButtonThemeData(
           style: TextButton.styleFrom(
             foregroundColor: Colors.black87,
@@ -37,7 +40,15 @@ class _ApplicationState extends State<Application> {
           ),
         ),
       ),
-      home: const HomePage(),
     );
+  }
+}
+
+class ScrollBehaviorModified extends ScrollBehavior {
+  const ScrollBehaviorModified();
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    return const BouncingScrollPhysics();
   }
 }
