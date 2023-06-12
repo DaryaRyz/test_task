@@ -31,18 +31,18 @@ class ImagePreview extends StatelessWidget {
               height: height,
               fit: fit,
               progressIndicatorBuilder: (context, url, downloadProgress) => Container(
-                color: Colors.grey,
+                color: ColorStyles.mainItemColor,
                 width: width,
                 height: height,
                 child: AppLoader(
                   value: downloadProgress.progress,
-                  color: ColorStyles.lightLoadingColor,
+                  color: ColorStyles.darkLoadingColor,
                 ),
               ),
               errorWidget: (context, url, error) => Container(
                 width: width,
                 height: height,
-                color: ColorStyles.borderColor,
+                color: ColorStyles.mainItemColor,
                 child: Center(
                   child: Assets.icons.imageError.svg(
                     width: 30,
@@ -58,7 +58,7 @@ class ImagePreview extends StatelessWidget {
         : Container(
             width: width,
             height: height,
-            color: ColorStyles.borderColor,
+            color: ColorStyles.mainItemColor,
           );
   }
 }

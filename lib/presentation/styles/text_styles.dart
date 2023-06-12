@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
 
-class TextStyles {
+abstract class TextStyles {
   static const h1 = TextStyle(
     color: ColorStyles.primaryFontColor,
     fontWeight: FontWeight.w500,

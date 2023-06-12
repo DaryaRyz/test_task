@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:test_task_flutter/domain/models/dish.dart';
 import 'package:test_task_flutter/gen/assets.gen.dart';
 import 'package:test_task_flutter/presentation/screens/category_screen/product_screen.dart';
-import 'package:test_task_flutter/presentation/screens/category_screen/widgets/app_icon_button.dart';
-import 'package:test_task_flutter/presentation/styles/color_styles.dart';
+import 'package:test_task_flutter/presentation/widgets/buttons/app_icon_button.dart';
 import 'package:test_task_flutter/presentation/styles/text_styles.dart';
 import 'package:test_task_flutter/presentation/widgets/app_dialog.dart';
-import 'package:test_task_flutter/presentation/widgets/image_preview.dart';
+import 'package:test_task_flutter/presentation/widgets/image_with_background.dart';
 
 class DishCard extends StatelessWidget {
   final Dish dish;
@@ -18,8 +17,7 @@ class DishCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
+    return GestureDetector(
       onTap: () => AppDialog.show(
         context,
         actions: [
@@ -35,16 +33,9 @@ class DishCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
+          ImageWithBackground(
+            dish.imageUrl,
             height: (MediaQuery.of(context).size.width - 48) / 3,
-            decoration: BoxDecoration(
-              color: ColorStyles.mainItemColor,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            padding: const EdgeInsets.all(8),
-            child: Center(
-              child: ImagePreview(imageUrl: dish.imageUrl),
-            ),
           ),
           const SizedBox(height: 5),
           Text(

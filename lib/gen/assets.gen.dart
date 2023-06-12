@@ -31,6 +31,9 @@ class $AssetsFontsGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/add.svg
+  SvgGenImage get add => const SvgGenImage('assets/icons/add.svg');
+
   /// File path: assets/icons/back.svg
   SvgGenImage get back => const SvgGenImage('assets/icons/back.svg');
 
@@ -49,8 +52,12 @@ class $AssetsIconsGen {
 
   $AssetsIconsNavBarGen get navBar => const $AssetsIconsNavBarGen();
 
+  /// File path: assets/icons/remove.svg
+  SvgGenImage get remove => const SvgGenImage('assets/icons/remove.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [back, close, favorite, imageError, location];
+  List<SvgGenImage> get values =>
+      [add, back, close, favorite, imageError, location, remove];
 }
 
 class $AssetsImagesGen {
