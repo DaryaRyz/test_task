@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_task_flutter/gen/assets.gen.dart';
-import 'package:test_task_flutter/presentation/screens/category_screen/widgets/app_icon_button.dart';
+import 'package:test_task_flutter/presentation/widgets/buttons/app_icon_button.dart';
 
 class AppDialog {
   static void show(

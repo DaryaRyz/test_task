@@ -30,6 +30,7 @@ class _ApplicationState extends State<Application> {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
+      scrollBehavior: const ScrollBehaviorModified(),
       theme: ThemeData(
         fontFamily: "SF",
         textButtonTheme: TextButtonThemeData(
@@ -39,12 +40,6 @@ class _ApplicationState extends State<Application> {
           ),
         ),
       ),
-      builder: (_, child) {
-        return ScrollConfiguration(
-          behavior: const ScrollBehaviorModified(),
-          child: child!,
-        );
-      },
     );
   }
 }

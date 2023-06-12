@@ -15,17 +15,20 @@ class AppIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 40,
-      height: 40,
-      decoration: BoxDecoration(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        width: 40,
+        height: 40,
         color: color,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: InkWell(
-        onTap: onTap,
-        child: Center(
-          child: icon,
+        child: Material(
+          color: Colors.transparent,
+          child: IconButton(
+            onPressed: onTap,
+            icon: Center(
+              child: icon,
+            ),
+          ),
         ),
       ),
     );

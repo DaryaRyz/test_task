@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
 import 'package:test_task_flutter/presentation/styles/text_styles.dart';
 
-class AppButton extends StatelessWidget {
+class AppTextButton extends StatelessWidget {
   final String title;
   final Color backgroundColor;
   final Color titleColor;
@@ -11,7 +11,7 @@ class AppButton extends StatelessWidget {
   final double width;
   final double height;
 
-  const AppButton({
+  const AppTextButton({
     Key? key,
     required this.title,
     this.borderRadius = 10,
