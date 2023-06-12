@@ -127,7 +127,7 @@ class _LocationTitleState extends State<_LocationTitle> {
             const SizedBox(height: 4),
             Text(
               UiUtil.dateFormat(DateTime.now()),
-              style: TextStyles.h4,
+              style: TextStyles.h4.copyWith(color: ColorStyles.primaryFontColor.withOpacity(0.5)),
             ),
           ],
         ),
