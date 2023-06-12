@@ -1,16 +1,20 @@
-# test_task_flutter
+# Test project
 
-A new Flutter project.
+This project is test project with minimal functions. This is a Flutter application that fetches and
+displays a list of categories dishes and dishes with the help of an external API. The project also
+lets us look each dish on individual popup. Also you can add or remove each dish to basket. The data
+of basket save in the local storage.
 
-## Getting Started
+### Technologies Used:
 
-This project is a starting point for a Flutter application.
+* Clean Architecture pattern
+* Bloc for state management
+* Retrofit with Dio for the Network layer
+* Hive for local storage
+* Injectable and GetIt for dependencies injection
+* AutoRoute for navigation
+* CachedNetworkImage for caching network images
+* EasyLocalization for localization in the application
+* FlutterGen for generating assets
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Before running the app, you have to run: `flutter pub run build_runner build`
