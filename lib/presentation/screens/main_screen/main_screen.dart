@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +9,7 @@ import 'package:test_task_flutter/presentation/screens/main_screen/widgets/categ
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
 import 'package:test_task_flutter/presentation/widgets/app_loader.dart';
 import 'package:test_task_flutter/presentation/widgets/custom_app_bar.dart';
+import 'package:test_task_flutter/presentation/widgets/empty_body.dart';
 import 'package:test_task_flutter/presentation/widgets/error_body.dart';
 
 @RoutePage()
@@ -36,6 +38,9 @@ class _MainScreenState extends State<MainScreen> {
         bloc: _categoryCubit,
         builder: (context, state) {
           if (state is CategoryReadyState) {
+            if (state.categories.isEmpty) {
+              return EmptyBody(text: 'emptyCategories'.tr());
+            }
             return ListView.separated(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               itemCount: state.categories.length,

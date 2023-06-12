@@ -53,7 +53,7 @@ class _BagScreenState extends State<BagScreen> {
             }
           }
           return EmptyBody(
-            text: 'bagEmpty'.tr(),
+            text: 'emptyBag'.tr(),
           );
         },
       ),

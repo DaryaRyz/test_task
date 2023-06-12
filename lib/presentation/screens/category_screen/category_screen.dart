@@ -9,6 +9,7 @@ import 'package:test_task_flutter/presentation/screens/category_screen/widgets/c
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
 import 'package:test_task_flutter/presentation/widgets/app_loader.dart';
 import 'package:test_task_flutter/presentation/widgets/custom_app_bar.dart';
+import 'package:test_task_flutter/presentation/widgets/empty_body.dart';
 import 'package:test_task_flutter/presentation/widgets/error_body.dart';
 
 @RoutePage()
@@ -45,6 +46,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
         bloc: _dishesBloc,
         builder: (context, state) {
           if (state is DishesReadyState) {
+            if (state.data.dishes.isEmpty) {
+              return EmptyBody(text: 'emptyDishes'.tr());
+            }
             return CategoryContent(
               data: state.data,
               bloc: _dishesBloc,

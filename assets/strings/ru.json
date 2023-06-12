@@ -11,7 +11,8 @@
   "reduceFromBag": "Убрать из корзины",
   "noPrice": "Нет цены",
   "noWeight": "Вес неизвестен",
-  "bagEmpty": "Корзина пуста",
-
+  "emptyBag": "Корзина пуста",
+  "emptyCategories": "Список категорий пуст",
+  "emptyDishes": "Список блюд пуст",
   "defaultError": "Произошла непредвиденная ошибка"
 }
