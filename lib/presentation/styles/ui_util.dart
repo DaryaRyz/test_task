@@ -9,7 +9,7 @@ class UiUtil {
 
   static String priceParse(double? price) {
     if (price != null) {
-      return '${price.toInt()} ₽';
+      return '${price.toStringAsFixed(0)} ${'rub'.tr()}';
     }
     return 'noPrice'.tr();
   }
@@ -19,5 +19,10 @@ class UiUtil {
       return '${weight.toInt()}г';
     }
     return 'noWeight'.tr();
+  }
+
+  static String getTotalPrice(double price) {
+    final priceWithSpacers = NumberFormat("#,##0").format(price).replaceAll(',', ' ');
+    return '${'pay'.tr()} $priceWithSpacers ${'rub'.tr()}';
   }
 }
