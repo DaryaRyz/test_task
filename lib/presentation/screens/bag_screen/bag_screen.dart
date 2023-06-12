@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:test_task_flutter/domain/bloc/bag_bloc.dart';
 import 'package:test_task_flutter/presentation/screens/bag_screen/bag_item_widget.dart';
 import 'package:test_task_flutter/presentation/styles/color_styles.dart';
+import 'package:test_task_flutter/presentation/widgets/app_loader.dart';
+import 'package:test_task_flutter/presentation/widgets/app_snack_bar.dart';
 import 'package:test_task_flutter/presentation/widgets/custom_app_bar.dart';
 import 'package:test_task_flutter/presentation/widgets/empty_body.dart';
 
@@ -25,10 +27,18 @@ class _BagScreenState extends State<BagScreen> {
     return Scaffold(
       backgroundColor: ColorStyles.backgroundColor,
       appBar: const CustomAppBar(),
-      body: BlocBuilder(
+      body: BlocConsumer(
         bloc: _bagBloc,
+        listener: (context, state) {
+          if (state is BagErrorState) {
+            AppSnackBar.show(context, text: state.errorText);
+          }
+        },
+        buildWhen: (context, state)=> state is! BagErrorState,
         builder: (context, state) {
-          if (state is BagReadyState) {
+          if (state is BagLoadingState) {
+            return const AppLoader();
+          } else if (state is BagReadyState) {
             if (state.items.isNotEmpty) {
               return ListView.separated(
                 padding: const EdgeInsets.all(16),
@@ -41,9 +51,6 @@ class _BagScreenState extends State<BagScreen> {
                 ),
               );
             }
-            return EmptyBody(
-              text: 'bagEmpty'.tr(),
-            );
           }
           return EmptyBody(
             text: 'bagEmpty'.tr(),

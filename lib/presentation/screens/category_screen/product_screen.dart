@@ -76,11 +76,6 @@ class _ProductScreenState extends State<ProductScreen> {
                     onReduce: () => _bagBloc.add(ReduceProductEvent(bagItem)),
                   ),
                 );
-              } else {
-                return AppTextButton(
-                  title: 'addToBag'.tr(),
-                  onTap: () => _bagBloc.add(AddProductEvent(BagItem(dish: widget.dish))),
-                );
               }
             }
             return AppTextButton(
