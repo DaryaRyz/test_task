@@ -5,6 +5,12 @@ displays a list of categories dishes and dishes with the help of an external API
 lets us look each dish on individual popup. Also you can add or remove each dish to basket. The data
 of basket save in the local storage.
 
+## Flutter and Dart version:
+
+This project created on:
+* Flutter version 3.7.9
+* Dart version 2.19.6
+
 ### Technologies Used:
 
 * Clean Architecture pattern
