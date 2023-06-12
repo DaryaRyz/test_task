@@ -28,6 +28,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
   final _dishesBloc = GetIt.I<DishesBloc>();
 
   @override
+  void dispose() {
+    _dishesBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorStyles.backgroundColor,

@@ -22,6 +22,12 @@ class _MainScreenState extends State<MainScreen> {
   final _categoryCubit = GetIt.I<CategoryCubit>();
 
   @override
+  void dispose() {
+    _categoryCubit.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(),

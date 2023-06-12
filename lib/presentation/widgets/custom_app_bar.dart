@@ -84,6 +84,12 @@ class _LocationTitleState extends State<_LocationTitle> {
   final _geoLocatorCubit = GetIt.I<GeoLocatorCubit>();
 
   @override
+  void dispose() {
+    _geoLocatorCubit.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
